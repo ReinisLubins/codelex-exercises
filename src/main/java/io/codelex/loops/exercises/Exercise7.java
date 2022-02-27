@@ -1,0 +1,59 @@
+package io.codelex.loops.exercises;
+
+import java.util.Scanner;
+
+public class Exercise7
+{
+    public static void main(String[] args)
+    {
+        Piglet();
+    }
+
+    public static int rollTheDice()
+    {
+        int diceMinRange = 1;
+        int diceMaxRange = 6;
+        return (int)Math.floor(Math.random()*(diceMaxRange-diceMinRange+1)+diceMinRange);
+    }
+
+    public static void Piglet()
+    {
+        int pointGathered = 0;
+        int rollFirstTime = rollTheDice();
+        boolean gameOver = false;
+        Scanner input = new Scanner(System.in);
+        System.out.println("Welcome to Piglet!");
+        System.out.println("You rolled a " + rollFirstTime + "!");
+        pointGathered += rollFirstTime;
+        if (pointGathered != 1)
+        {
+            do
+            {
+                System.out.println("Roll again?");
+                String rollAgain = input.next();
+
+                if (rollAgain.equals("yes"))
+                {
+                    int rollOnceMore = rollTheDice();
+                    if (rollOnceMore != 1)
+                    {
+                        System.out.println("You rolled a " + rollOnceMore + "!");
+                        pointGathered += rollOnceMore;
+                    } else
+                    {
+                        System.out.println("You rolled a " + rollOnceMore + "!");
+                        System.out.println("You got 0 points!");
+                        gameOver = true;
+                    }
+                } else if (rollAgain.equals("no")) {
+                    System.out.println("You got " + pointGathered + " points.");
+                    break;
+                }
+            } while (!gameOver);
+        } else
+        {
+            System.out.println("You got 0 points!");
+        }
+    }
+}
+
