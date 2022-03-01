@@ -2,22 +2,16 @@ package io.codelex.loops.exercises;
 
 import java.util.Scanner;
 
-public class Exercise7
-{
-    public static void main(String[] args)
-    {
+public class Exercise7 {
+    public static void main(String[] args) {
         Piglet();
     }
 
-    public static int rollTheDice()
-    {
-        int diceMinRange = 1;
-        int diceMaxRange = 6;
-        return (int)Math.floor(Math.random()*(diceMaxRange-diceMinRange+1)+diceMinRange);
+    public static int rollTheDice() {
+        return (int)Math.floor((Math.random()*6)+1); // 6 - diceMaxRange; 1 - diceMinRange
     }
 
-    public static void Piglet()
-    {
+    public static void Piglet() {
         int pointGathered = 0;
         int rollFirstTime = rollTheDice();
         boolean gameOver = false;
@@ -25,33 +19,27 @@ public class Exercise7
         System.out.println("Welcome to Piglet!");
         System.out.println("You rolled a " + rollFirstTime + "!");
         pointGathered += rollFirstTime;
-        if (pointGathered != 1)
-        {
-            do
-            {
+        if (pointGathered != 1) {
+            do {
                 System.out.println("Roll again?");
                 String rollAgain = input.next();
 
-                if (rollAgain.equals("yes"))
-                {
+                if (rollAgain.equals("yes")) {
                     int rollOnceMore = rollTheDice();
-                    if (rollOnceMore != 1)
-                    {
+                    if (rollOnceMore != 1) {
                         System.out.println("You rolled a " + rollOnceMore + "!");
                         pointGathered += rollOnceMore;
-                    } else
-                    {
+                    } else {
                         System.out.println("You rolled a " + rollOnceMore + "!");
                         System.out.println("You got 0 points!");
                         gameOver = true;
                     }
                 } else if (rollAgain.equals("no")) {
                     System.out.println("You got " + pointGathered + " points.");
-                    break;
+                    gameOver = true;
                 }
             } while (!gameOver);
-        } else
-        {
+        } else {
             System.out.println("You got 0 points!");
         }
     }

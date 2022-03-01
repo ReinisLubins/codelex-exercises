@@ -2,17 +2,15 @@ package io.codelex.flowcontrol.exercises;
 
 import java.util.Scanner;
 
-public class Exercise5
-{
-    public static void main(String[] args)
-    {
+public class Exercise5 {
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Input your charter: ");
         String inputChar = scan.next().toLowerCase();
-        PhoneKeyPad(inputChar);
+        phoneKeyPad(inputChar);
     }
-    public static void PhoneKeyPad(String inChar)
-    {
+
+    public static void phoneKeyPad(String inChar) {
         switch (inChar) {
             case "a", "b", "c" -> System.out.println("2");
             case "d", "e", "f" -> System.out.println("3");

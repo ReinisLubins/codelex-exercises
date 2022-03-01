@@ -3,7 +3,6 @@ package io.codelex.flowcontrol.practice;
 import java.util.Scanner;
 
 public class LargestNumber {
-
     //TODO: Write a Java program to to find the largest of three numbers.
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -17,14 +16,11 @@ public class LargestNumber {
         System.out.print("Input the 3rd number: ");
         int num3 = in.nextInt();
 
-        if (num1 > num2 && num1 > num3)
-        {
+        if (num1 > num2 && num1 > num3) {
             System.out.println("Largest number is: " + num1);
-        } else if (num2 > num1 && num2 > num3)
-        {
+        } else if (num2 > num1 && num2 > num3) {
             System.out.println("Largest number is: " + num2);
-        } else  if (num3 > num1 && num3 > num2)
-        {
+        } else  if (num3 > num1 && num3 > num2) {
             System.out.println("Largest number is: " + num3);
         }
         /*
@@ -34,5 +30,4 @@ public class LargestNumber {
         Input the 3rd number: 87
          */
     }
-
 }
