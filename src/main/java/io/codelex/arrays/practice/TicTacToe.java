@@ -16,7 +16,7 @@ public class TicTacToe {
         Scanner keyboard = new Scanner(System.in);
         boolean player1Turn = true;
         do {
-            if(player1Turn) {
+            if (player1Turn) {
                 System.out.println("Player1 make your move:");
                 System.out.print("Enter row number (0, 1 or 2): ");
                 int row = keyboard.nextInt();
@@ -26,7 +26,7 @@ public class TicTacToe {
                 if (row > 2 && column > 2) {
                     player1Turn = validRange(keyboard, 'X');
                     displayBoard();
-                } else if (board[row][column] != ' '){
+                } else if (board[row][column] != ' ') {
                     player1Turn = onlyFreeSpaceValid(keyboard, 'X');
                     displayBoard();
                 } else {
@@ -44,7 +44,7 @@ public class TicTacToe {
                 if (row > 2 && column > 2) {
                     player1Turn = validRange(keyboard, 'Y');
                     displayBoard();
-                } else if (board[row][column] != ' '){
+                } else if (board[row][column] != ' ') {
                     player1Turn = onlyFreeSpaceValid(keyboard, 'Y');
                     displayBoard();
                 } else {
@@ -64,32 +64,24 @@ public class TicTacToe {
     }
 
     public static boolean onlyFreeSpaceValid(Scanner keyboard, char xOrY) {
-        boolean player1Turn;
-        int row = 0;
-        int column = 0;
+        int row;
+        int column;
         do {
             System.out.println("Please chose free space");
             System.out.print("Enter row number (0, 1 or 2): ");
             row = keyboard.nextInt();
             System.out.print("Enter column number (0, 1 or 2): ");
             column = keyboard.nextInt();
+            if (row > 2 || column > 2) {
+                return validRange(keyboard, xOrY);
+            }
         } while (board[row][column] != ' ');
 
-        if (row > 2 || column > 2) {
-            return validRange(keyboard, xOrY);
-        } else {
-            board[row][column] = xOrY;
-            if (xOrY == 'Y') {
-                player1Turn = true;
-            } else {
-                player1Turn = false;
-            }
-            return player1Turn;
-        }
+        board[row][column] = xOrY;
+        return xOrY == 'Y';
     }
 
     public static boolean validRange(Scanner keyboard, char xOry) {
-        boolean player1Turn;
         int row;
         int column;
         do {
@@ -101,12 +93,7 @@ public class TicTacToe {
         } while (row > 2 || column > 2);
 
         board[row][column] = xOry;
-        if(xOry == 'Y') {
-            player1Turn = true;
-        } else {
-            player1Turn = false;
-        }
-        return player1Turn;
+        return xOry == 'Y';
     }
 
     public static void initBoard() {
@@ -137,60 +124,28 @@ public class TicTacToe {
     }
 
     public static boolean player1Won() {
-        boolean player1HasWon;
-        if (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X') {
-            player1HasWon = true;
-        } else if (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X') {
-            player1HasWon = true;
-        } else if (board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X') {
-            player1HasWon = true;
-        } else if (board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X') {
-            player1HasWon = true;
-        } else if (board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X') {
-            player1HasWon = true;
-        } else if (board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X') {
-            player1HasWon = true;
-        } else if (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X') {
-            player1HasWon = true;
-        } else if (board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X') {
-            player1HasWon = true;
-        } else {
-            player1HasWon = false;
-        }
-        return player1HasWon;
+        return (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X') ||
+                (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X') ||
+                (board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X') ||
+                (board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X') ||
+                (board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X') ||
+                (board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X') ||
+                (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X') ||
+                (board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X');
     }
 
     public static boolean player2Won() {
-        boolean player2HasWon;
-        if (board[0][0] == 'Y' && board[0][1] == 'Y' && board[0][2] == 'Y') {
-            player2HasWon = true;
-        } else if (board[1][0] == 'Y' && board[1][1] == 'Y' && board[1][2] == 'Y') {
-            player2HasWon = true;
-        } else if (board[2][0] == 'Y' && board[2][1] == 'Y' && board[2][2] == 'Y') {
-            player2HasWon = true;
-        } else if (board[0][0] == 'Y' && board[1][0] == 'Y' && board[2][0] == 'Y') {
-            player2HasWon = true;
-        } else if (board[0][1] == 'Y' && board[1][1] == 'Y' && board[2][1] == 'Y') {
-            player2HasWon = true;
-        } else if (board[0][2] == 'Y' && board[1][2] == 'Y' && board[2][2] == 'Y') {
-            player2HasWon = true;
-        } else if (board[0][0] == 'Y' && board[1][1] == 'Y' && board[2][2] == 'Y') {
-            player2HasWon = true;
-        } else if (board[0][2] == 'Y' && board[1][1] == 'Y' && board[2][0] == 'Y') {
-            player2HasWon = true;
-        } else {
-            player2HasWon = false;
-        }
-        return player2HasWon;
+        return (board[0][0] == 'Y' && board[0][1] == 'Y' && board[0][2] == 'Y') ||
+                (board[1][0] == 'Y' && board[1][1] == 'Y' && board[1][2] == 'Y') ||
+                (board[2][0] == 'Y' && board[2][1] == 'Y' && board[2][2] == 'Y') ||
+                (board[0][0] == 'Y' && board[1][0] == 'Y' && board[2][0] == 'Y') ||
+                (board[0][1] == 'Y' && board[1][1] == 'Y' && board[2][1] == 'Y') ||
+                (board[0][2] == 'Y' && board[1][2] == 'Y' && board[2][2] == 'Y') ||
+                (board[0][0] == 'Y' && board[1][1] == 'Y' && board[2][2] == 'Y') ||
+                (board[0][2] == 'Y' && board[1][1] == 'Y' && board[2][0] == 'Y');
     }
 
     public static boolean gameEnded() {
-        boolean finished;
-        if (player1Won() || player2Won() || boardIsFull()) {
-            finished = true;
-        } else {
-            finished = false;
-        }
-        return finished;
+        return player1Won() || player2Won() || boardIsFull();
     }
 }

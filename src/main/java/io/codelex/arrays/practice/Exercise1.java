@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 public class Exercise1 {
 
-    //TODO: Write a Java program to sort a numeric array and a string array.
     public static void main(String[] args) {
 
         int[] myArray1 = {
