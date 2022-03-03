@@ -7,13 +7,9 @@ public class Exercise2 {
         int myArray[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         int sum = 0;
 
-        /*
-        fixme
-        for (........) {
-        ........
+        for (int j : myArray) {
+            sum += j;
         }
-        */
-
         System.out.println("The sum is " + sum);
     }
 }
