@@ -91,7 +91,9 @@ public class TicTacToe {
             System.out.print("Enter column number (0, 1 or 2): ");
             column = keyboard.nextInt();
         } while (row > 2 || column > 2);
-
+        if (board[row][column] != ' ') {
+            return onlyFreeSpaceValid(keyboard, xOry);
+        }
         board[row][column] = xOry;
         return xOry == 'Y';
     }
