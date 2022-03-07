@@ -41,6 +41,7 @@ public class VideoStoreTest {
         for (int i = 0; i < COUNT_OF_MOVIES; i++) {
             System.out.println("Enter movie name");
             String movieName = scanner.next();
+            movieName += scanner.nextLine();
             System.out.println("Enter rating");
             int rating = scanner.nextInt();
             newList.addVideo(movieName);
