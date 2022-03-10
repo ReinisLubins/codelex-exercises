@@ -1,6 +1,7 @@
 package io.codelex.arrays.exercises;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Exercise6 {
     public static void main(String[] args) {
@@ -8,7 +9,7 @@ public class Exercise6 {
         int[] array1 = new int[10];
 
         for (int i = 0; i < array1.length; i++) {
-            array1[i] = randomNumber(1, 100);
+            array1[i] = randomNumber();
         }
 
         int[] array2 = array1.clone();
@@ -19,7 +20,8 @@ public class Exercise6 {
         System.out.println("Array 2: " + Arrays.toString(array2));
     }
 
-    public static int randomNumber(int min, int max) {
-        return (int)Math.floor(Math.random()*(max+min));
+    private static int randomNumber() {
+        Random random = new Random();
+        return random.nextInt(100);
     }
 }

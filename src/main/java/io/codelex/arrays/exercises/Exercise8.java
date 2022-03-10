@@ -5,10 +5,19 @@ import java.util.Scanner;
 
 public class Exercise8 {
     public static void main(String[] args) {
-        hangmanGame();
+        gameLogic();
+        playAgain();
     }
 
-    private static void hangmanGame() {
+    private static void gameDeck(StringBuilder word, StringBuilder missesChar, StringBuilder guessChar) {
+        System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+        System.out.print("Word:   " + word + "\n");
+        System.out.print("Misses: " + missesChar + "\n");
+        System.out.print("Guess:  " + guessChar + "\n");
+        System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+    }
+
+    private static void gameLogic() {
         String[] listOfWords = {"airplane", "car", "computer", "window", "apple", "bicycle", "programming", "software", "mouse", "keyboard"};
 
         Random rand = new Random();
@@ -25,11 +34,7 @@ public class Exercise8 {
 
         Scanner in = new Scanner(System.in);
 
-        System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
-        System.out.print("Word:   " + word + "\n");
-        System.out.print("Misses: " + missesChar + "\n");
-        System.out.print("Guess:  " + guessChar + "\n");
-        System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+        gameDeck(word, missesChar, guessChar);
 
         while (!word.toString().equals(chosenRandomWord)) {
             System.out.print("Please enter your guess character: ");
@@ -48,27 +53,21 @@ public class Exercise8 {
                     break;
                 }
             }
-
-            System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
-            System.out.print("Word:   " + word + "\n");
-            System.out.print("Misses: " + missesChar + "\n");
-            System.out.print("Guess:  " + guessChar + "\n");
-            System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+            gameDeck(word, missesChar, guessChar);
         }
         if (word.toString().equals(chosenRandomWord)) {
             System.out.println("YOU GOT IT!");
         } else {
             System.out.println("YOU LOST!");
         }
-        playAgain();
     }
 
-    public static void playAgain() {
+    private static void playAgain() {
         Scanner in = new Scanner(System.in);
         System.out.println("Play again or quit?");
         String againOrQuit = in.next().toLowerCase();
         if (againOrQuit.equals("again")) {
-            hangmanGame();
+            gameLogic();
         } else {
             System.out.println("Thank you for playing");
         }

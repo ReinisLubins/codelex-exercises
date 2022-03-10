@@ -11,7 +11,7 @@ public class TicTacToe {
         gameLogic();
     }
 
-    public static void gameLogic() {
+    private static void gameLogic() {
         displayBoard();
         Scanner keyboard = new Scanner(System.in);
         boolean player1Turn = true;
@@ -54,16 +54,16 @@ public class TicTacToe {
                 }
             }
         } while (!gameEnded());
-        if (player1Won()) {
+        if (playerWon('X')) {
             System.out.println("Congratulations Player1 has won!");
-        } else if (player2Won()) {
+        } else if (playerWon('Y')) {
             System.out.println("Congratulations Player2 has won!");
         } else {
             System.out.println("The game is a tie!");
         }
     }
 
-    public static boolean onlyFreeSpaceValid(Scanner keyboard, char xOrY) {
+    private static boolean onlyFreeSpaceValid(Scanner keyboard, char xOrY) {
         int row;
         int column;
         do {
@@ -81,16 +81,17 @@ public class TicTacToe {
         return xOrY == 'Y';
     }
 
-    public static boolean validRange(Scanner keyboard, char xOry) {
+    private static boolean validRange(Scanner keyboard, char xOry) {
         int row;
         int column;
+        int outOfBounds = 2; // variak par 2
         do {
             System.out.println("Please enter valid row and column range (0, 1 or 2)");
             System.out.print("Enter row number (0, 1 or 2): ");
             row = keyboard.nextInt();
             System.out.print("Enter column number (0, 1 or 2): ");
             column = keyboard.nextInt();
-        } while (row > 2 || column > 2);
+        } while (row > outOfBounds || column > outOfBounds);
         if (board[row][column] != ' ') {
             return onlyFreeSpaceValid(keyboard, xOry);
         }
@@ -98,14 +99,14 @@ public class TicTacToe {
         return xOry == 'Y';
     }
 
-    public static void initBoard() {
+    private static void initBoard() {
         // fills up the board with blanks
         for (int r = 0; r < 3; r++)
             for (int c = 0; c < 3; c++)
                 board[r][c] = ' ';
     }
 
-    public static void displayBoard() {
+    private static void displayBoard() {
         System.out.println("  0  " + board[0][0] + "|" + board[0][1] + "|" + board[0][2]);
         System.out.println("    --+-+--");
         System.out.println("  1  " + board[1][0] + "|" + board[1][1] + "|" + board[1][2]);
@@ -114,7 +115,7 @@ public class TicTacToe {
         System.out.println("     0 1 2 ");
     }
 
-    public static boolean boardIsFull() {
+    private static boolean boardIsFull() {
         for (int r = 0; r < 3; r++) {
             for (int c = 0; c < 3; c++) {
                 if (board[r][c] == ' ') {
@@ -125,29 +126,19 @@ public class TicTacToe {
         return true;
     }
 
-    public static boolean player1Won() {
-        return (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X') ||
-                (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X') ||
-                (board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X') ||
-                (board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X') ||
-                (board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X') ||
-                (board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X') ||
-                (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X') ||
-                (board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X');
+    private static boolean playerWon(char player) {
+        return (board[0][0] == player && board[0][1] == player && board[0][2] == player) ||
+                (board[1][0] == player && board[1][1] == player && board[1][2] == player) ||
+                (board[2][0] == player && board[2][1] == player && board[2][2] == player) ||
+                (board[0][0] == player && board[1][0] == player && board[2][0] == player) ||
+                (board[0][1] == player && board[1][1] == player && board[2][1] == player) ||
+                (board[0][2] == player && board[1][2] == player && board[2][2] == player) ||
+                (board[0][0] == player && board[1][1] == player && board[2][2] == player) ||
+                (board[0][2] == player && board[1][1] == player && board[2][0] == player);
     }
 
-    public static boolean player2Won() {
-        return (board[0][0] == 'Y' && board[0][1] == 'Y' && board[0][2] == 'Y') ||
-                (board[1][0] == 'Y' && board[1][1] == 'Y' && board[1][2] == 'Y') ||
-                (board[2][0] == 'Y' && board[2][1] == 'Y' && board[2][2] == 'Y') ||
-                (board[0][0] == 'Y' && board[1][0] == 'Y' && board[2][0] == 'Y') ||
-                (board[0][1] == 'Y' && board[1][1] == 'Y' && board[2][1] == 'Y') ||
-                (board[0][2] == 'Y' && board[1][2] == 'Y' && board[2][2] == 'Y') ||
-                (board[0][0] == 'Y' && board[1][1] == 'Y' && board[2][2] == 'Y') ||
-                (board[0][2] == 'Y' && board[1][1] == 'Y' && board[2][0] == 'Y');
-    }
 
-    public static boolean gameEnded() {
-        return player1Won() || player2Won() || boardIsFull();
+    private static boolean gameEnded() {
+        return playerWon('X') || playerWon('Y') || boardIsFull();
     }
 }
