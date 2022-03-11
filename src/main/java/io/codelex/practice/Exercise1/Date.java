@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Date {
 
-    public static void hoursOfWork(LocalDate firstDate, LocalDate secondDate) {
+    public static void hoursOfWork(LocalDate firstDate, LocalDate secondDate) { // logic
         int sumOfHours = 0;
         for (LocalDate date = firstDate.minusDays(1); date.isBefore(secondDate); date = date.plusDays(1)) {
             if (date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
@@ -18,7 +18,7 @@ public class Date {
         System.out.println(sumOfHours);
     }
 
-    public static void runProgram() {
+    public static void runProgram() { // print
         Scanner in = new Scanner(System.in);
         System.out.println("Enter year of first date: ");
         int year1 = in.nextInt();
@@ -40,5 +40,4 @@ public class Date {
         LocalDate secondDate = LocalDate.of(year2, month2, days2);
         Date.hoursOfWork(firstDate, secondDate);
     }
-
 }

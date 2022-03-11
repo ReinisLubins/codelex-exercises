@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Update {
 
-    public static void dayToUpdate(LocalDate launchDate, int yearToUpdate, int monthToUpdate) {
+    public static void dayToUpdate(LocalDate launchDate, int yearToUpdate, int monthToUpdate) { // logic
         LocalDate inputDate = LocalDate.of(yearToUpdate, monthToUpdate, 1);
         LocalDate dateOfUpdates = inputDate.with(TemporalAdjusters.lastDayOfMonth());
 
@@ -17,7 +17,7 @@ public class Update {
         }
     }
 
-    public static void runProgram() {
+    public static void runProgram() { // print
         Scanner in = new Scanner(System.in);
         System.out.println("Enter year of server launch: ");
         int year = in.nextInt();
