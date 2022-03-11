@@ -11,8 +11,22 @@ public class DatePeriod {
         this.secondDate = secondDate;
     }
 
-    /*public DatePeriod intersection(DatePeriod secondPeriod) {
+    public DatePeriod intersection(DatePeriod secondPeriod) {
+        if (firstDate.isBefore(secondPeriod.firstDate) && secondDate.isAfter(secondPeriod.firstDate)) {
+            return new DatePeriod(secondPeriod.firstDate, secondDate);
+        } else if (firstDate.isBefore(secondPeriod.secondDate) && secondDate.isAfter(secondPeriod.secondDate)) {
+            return new DatePeriod(firstDate, secondPeriod.secondDate);
+        } else {
+            return null;
+        }
+    }
 
-    }*/
+    public LocalDate getFirstDate() {
+        return firstDate;
+    }
+
+    public LocalDate getSecondDate() {
+        return secondDate;
+    }
 }
-//(StartDate1 <= EndDate2) and (StartDate2 <= EndDate1)/
+

@@ -4,8 +4,15 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        LocalDate first = LocalDate.of(2022, 3, 5);
-        LocalDate second = LocalDate.of(2022, 3, 9);
-        DatePeriod firstPeriod = new DatePeriod(first, second);
+        LocalDate firstStart = LocalDate.of(2022, 1, 1);
+        LocalDate firstEnd = LocalDate.of(2022, 1, 15);
+        DatePeriod firstPeriod = new DatePeriod(firstStart, firstEnd);
+
+        LocalDate secondStart = LocalDate.of(2022, 1, 10);
+        LocalDate secondEnd = LocalDate.of(2022, 1, 25);
+        DatePeriod secondPeriod = new DatePeriod(secondStart, secondEnd);
+
+        DatePeriod overlap = firstPeriod.intersection(secondPeriod);
+        System.out.println(overlap.getFirstDate() + " " + overlap.getSecondDate());
     }
 }
