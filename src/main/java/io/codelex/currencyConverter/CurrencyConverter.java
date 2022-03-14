@@ -1,4 +1,4 @@
-package io.codelex.currencyConverter;
+/*package io.codelex.currencyConverter;
 
 import org.json.JSONObject;
 
@@ -58,4 +58,4 @@ public class CurrencyConverter {
         }
         return  inputData.toString();
     }
-}
+}*/
