@@ -12,10 +12,10 @@ public class Car implements Comparable<Car> {
     private List<Manufacturer> manufacturers;
     private EngineType typeOfEngine;
 
-    public Car(String name, String model, BigDecimal price, int yearOfManufacture, List<Manufacturer> manufacturers, EngineType typeOfEngine) {
+    public Car(String name, String model, int price, int yearOfManufacture, List<Manufacturer> manufacturers, EngineType typeOfEngine) {
         this.name = name;
         this.model = model;
-        this.price = price;
+        this.price = BigDecimal.valueOf(price);
         this.yearOfManufacture = yearOfManufacture;
         this.manufacturers = manufacturers;
         this.typeOfEngine = typeOfEngine;
@@ -59,6 +59,18 @@ public class Car implements Comparable<Car> {
     @Override
     public int hashCode() {
         return Objects.hash(name, model, price, yearOfManufacture, manufacturers, typeOfEngine);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "name='" + name + '\'' +
+                ", model='" + model + '\'' +
+                ", price=" + price +
+                ", yearOfManufacture=" + yearOfManufacture +
+                ", typeOfEngine=" + typeOfEngine + "\n" +
+                ", manufacturers=" + manufacturers + "\n" +
+                '}';
     }
 
     @Override

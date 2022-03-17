@@ -6,11 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class CarService {
-    private List<Car> carList;
-
-    public CarService(List<Car> carList) {
-        this.carList = carList;
-    }
+    private List<Car> carList = new ArrayList<>();
 
     public void addCar(Car carName) {
         carList.add(carName);
@@ -27,24 +23,24 @@ public class CarService {
                 '}';
     }
 
-    public void carsWithV12() {
+    public List<Car> carsWithV12() {
+        List<Car> carsList = new ArrayList<>();
         for (Car car : carList) {
             if (car.getTypeOfEngine() == EngineType.V12) {
-                System.out.println(car);
-            } else {
-                System.out.println("There is no cars with V12 engines!");
+                carsList.add(car);
             }
         }
+        return carsList;
     }
 
-    public void carsBefore1999() {
+    public List<Car> carsBefore1999() {
+        List<Car> carsList = new ArrayList<>();
         for (Car car : carList) {
             if (car.getYearOfManufacture() < 1999) {
-                System.out.println(car);
-            } else {
-                System.out.println("There is no cars manufactured before 1999!");
+                carsList.add(car);
             }
         }
+        return carsList;
     }
 
     public Car mostExpensiveCar() {
@@ -74,12 +70,14 @@ public class CarService {
         return theCheapestCar;
     }
 
-    public void carWithManufacturers() {
+    public List<Car> carWithThreeOrMoreManufacturers() {
+        List<Car> carsList = new ArrayList<>();
         for (Car car : carList) {
             if (car.getManufacturers().size() >= 3) {
-                System.out.println(car);
+                carsList.add(car);
             }
         }
+        return carsList;
     }
 
     public void ascendingCarList() {
@@ -110,6 +108,18 @@ public class CarService {
         for (Car car : carList) {
             for (Manufacturer manufacturer : car.getManufacturers()) {
                 if (manufacturer.getName().equals(nameOfManufacturer)) {
+                    carsWithSameManufacturer.add(car);
+                }
+            }
+        }
+        return carsWithSameManufacturer;
+    }
+
+    public List<Car> theSameManufacturer(String nameOfManufacturer, int yearOfEstablishment) {
+        List<Car> carsWithSameManufacturer = new ArrayList<>();
+        for (Car car : carList) {
+            for (Manufacturer manufacturer : car.getManufacturers()) {
+                if (manufacturer.getName().equals(nameOfManufacturer) && manufacturer.getYearOfEstablishment() == yearOfEstablishment) {
                     carsWithSameManufacturer.add(car);
                 }
             }
