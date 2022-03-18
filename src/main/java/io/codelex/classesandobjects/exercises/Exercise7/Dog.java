@@ -2,18 +2,18 @@ package io.codelex.classesandobjects.exercises.Exercise7;
 
 public class Dog {
     private String name;
-    private String sex;
+    private TheSexOfDog sex;
     private String mothersName;
     private String fathersName;
 
-    public Dog(String name, String sex, String mother, String father) {
+    public Dog(String name, TheSexOfDog sex, String mother, String father) {
         this.name = name;
         this.sex = sex;
         this.mothersName = mother;
         this.fathersName = father;
     }
 
-    public Dog(String name, String sex) {
+    public Dog(String name, TheSexOfDog sex) {
         this.name = name;
         this.sex = sex;
     }

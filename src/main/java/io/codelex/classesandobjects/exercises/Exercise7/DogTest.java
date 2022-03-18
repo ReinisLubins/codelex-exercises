@@ -2,14 +2,14 @@ package io.codelex.classesandobjects.exercises.Exercise7;
 
 public class DogTest {
     public static void main(String[] args) {
-        Dog max = new Dog("Max", "male", "Lady", "Rocky");
-        Dog rocky = new Dog("Rocky", "male", "Molly", "Sam");
-        Dog sparky = new Dog("Sparky", "male");
-        Dog buster = new Dog("Buster", "male", "Lady", "Sparky");
-        Dog sam = new Dog("Sam", "male");
-        Dog lady = new Dog("Lady", "female");
-        Dog molly = new Dog("Molly", "female");
-        Dog coco = new Dog("Coco", "female", "Molly", "Buster");
+        Dog max = new Dog("Max", TheSexOfDog.MALE, "Lady", "Rocky");
+        Dog rocky = new Dog("Rocky", TheSexOfDog.MALE, "Molly", "Sam");
+        Dog sparky = new Dog("Sparky", TheSexOfDog.MALE);
+        Dog buster = new Dog("Buster", TheSexOfDog.MALE, "Lady", "Sparky");
+        Dog sam = new Dog("Sam", TheSexOfDog.MALE);
+        Dog lady = new Dog("Lady", TheSexOfDog.FEMALE);
+        Dog molly = new Dog("Molly", TheSexOfDog.FEMALE);
+        Dog coco = new Dog("Coco", TheSexOfDog.FEMALE, "Molly", "Buster");
 
         System.out.println(max);
         System.out.println(coco.getFathersName());
