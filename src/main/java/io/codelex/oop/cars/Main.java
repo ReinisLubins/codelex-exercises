@@ -49,6 +49,6 @@ public class Main {
 
         System.out.println(newCarService.specificManufacturer("Tesla") + "\n");
 
-        System.out.println(newCarService.theSameManufacturer("Toyota", 1990));
+        System.out.println(newCarService.theSameManufacturer(2005, "="));
     }
 }

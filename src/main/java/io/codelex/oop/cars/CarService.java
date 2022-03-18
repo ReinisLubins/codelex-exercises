@@ -115,12 +115,34 @@ public class CarService {
         return carsWithSameManufacturer;
     }
 
-    public List<Car> theSameManufacturer(String nameOfManufacturer, int yearOfEstablishment) {
+    public List<Car> theSameManufacturer(int yearOfEstablishment, String character) {
         List<Car> carsWithSameManufacturer = new ArrayList<>();
         for (Car car : carList) {
             for (Manufacturer manufacturer : car.getManufacturers()) {
-                if (manufacturer.getName().equals(nameOfManufacturer) && manufacturer.getYearOfEstablishment() == yearOfEstablishment) {
-                    carsWithSameManufacturer.add(car);
+                if (character.equals(">")) {
+                    if (manufacturer.getYearOfEstablishment() > yearOfEstablishment) {
+                        carsWithSameManufacturer.add(car);
+                    }
+                } else if (character.equals("<")) {
+                    if (manufacturer.getYearOfEstablishment() < yearOfEstablishment) {
+                        carsWithSameManufacturer.add(car);
+                    }
+                } else if (character.equals(">=")) {
+                    if (manufacturer.getYearOfEstablishment() >= yearOfEstablishment) {
+                        carsWithSameManufacturer.add(car);
+                    }
+                } else if (character.equals("<=")) {
+                    if (manufacturer.getYearOfEstablishment() <= yearOfEstablishment) {
+                        carsWithSameManufacturer.add(car);
+                    }
+                } else if (character.equals("=")) {
+                    if (manufacturer.getYearOfEstablishment() == yearOfEstablishment) {
+                        carsWithSameManufacturer.add(car);
+                    }
+                } else if (character.equals("!=")) {
+                    if (manufacturer.getYearOfEstablishment() != yearOfEstablishment) {
+                        carsWithSameManufacturer.add(car);
+                    }
                 }
             }
         }
