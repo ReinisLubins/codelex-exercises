@@ -42,7 +42,7 @@ public class Dog {
         return mothersName;
     }
 
-    public static boolean hasSameMotherAs(Dog firstDog, Dog secondDog) {
-        return firstDog.mothersName.equals(secondDog.mothersName);
+    public boolean hasSameMotherAs(Dog secondDog) {
+        return mothersName.equals(secondDog.mothersName);
     }
 }

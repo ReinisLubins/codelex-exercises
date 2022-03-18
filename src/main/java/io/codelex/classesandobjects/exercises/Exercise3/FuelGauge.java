@@ -1,8 +1,8 @@
 package io.codelex.classesandobjects.exercises.Exercise3;
 
 public class FuelGauge {
-    private double liters;
     final static double MAX_LITERS = 70;
+    private double liters;
 
     public FuelGauge() { // ja masina nav nekas iepildits, tad nevar ielikt litrus
         this.liters = 0;

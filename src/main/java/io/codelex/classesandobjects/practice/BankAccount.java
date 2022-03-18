@@ -3,6 +3,8 @@ package io.codelex.classesandobjects.practice;
 // Each BankAccount object represents one user's account
 // information including name and balance of money.
 
+import java.text.DecimalFormat;
+
 public class BankAccount {
     public String name;
     public double balance;
@@ -11,16 +13,18 @@ public class BankAccount {
         this.name = name;
         this.balance = balance;
     }
+
     @Override
     public String toString() {
-        return  name + ", " + printBalance();
+        return name + ", " + printBalance();
     }
 
     public String printBalance() {
+        DecimalFormat df = new DecimalFormat("0.00");
         if (balance < 0) {
-            return "-$" + Math.abs(balance);
+            return "-$" + df.format(Math.abs(balance));
         } else {
-            return "$" + balance;
+            return "$" + df.format(balance);
         }
     }
 

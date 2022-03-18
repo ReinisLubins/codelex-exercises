@@ -4,6 +4,8 @@ public class Car {
     private double startKilometers;
     private double liters;
     private double mileage;
+    private final int FUEL_CONSUMPTION_HOG = 15;
+    private final int FUEL_CONSUMPTION_ECONOMY = 5;
 
     public Car(double startOdo) {
         startKilometers = startOdo;
@@ -14,11 +16,11 @@ public class Car {
     }
 
     public boolean gasHog() {
-        return calculateConsumption() > 15;
+        return calculateConsumption() > FUEL_CONSUMPTION_HOG;
     }
 
     public boolean economyCar() {
-        return calculateConsumption() < 5;
+        return calculateConsumption() < FUEL_CONSUMPTION_ECONOMY;
     }
 
     void fillUp(double mileage, double liters) {

@@ -15,7 +15,7 @@ public class VideoStore {
 
     public void userRating(String nameOfVideo, int rating) {
         for (int i = 0; i < videoList.toArray().length; i++) {
-            if (videoList.get(i).title.equals(nameOfVideo)) {
+            if (videoList.get(i).getTitle().equals(nameOfVideo)) {
                 videoList.get(i).receivingRating(rating);
             }
         }
@@ -23,7 +23,7 @@ public class VideoStore {
 
     public void checkOutVideo(String nameOfVideo) {
         for (int i = 0; i < videoList.toArray().length; i++) {
-            if (videoList.get(i).title.equals(nameOfVideo)) {
+            if (videoList.get(i).getTitle().equals(nameOfVideo)) {
                 videoList.get(i).checkedOut();
             }
         }
@@ -31,7 +31,7 @@ public class VideoStore {
 
     public void returnVideo(String nameOfVideo) {
         for (int i = 0; i < videoList.toArray().length; i++) {
-            if (videoList.get(i).title.equals(nameOfVideo)) {
+            if (videoList.get(i).getTitle().equals(nameOfVideo)) {
                 videoList.get(i).returned();
             }
         }

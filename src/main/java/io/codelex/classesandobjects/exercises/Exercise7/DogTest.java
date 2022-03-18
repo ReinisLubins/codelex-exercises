@@ -1,7 +1,5 @@
 package io.codelex.classesandobjects.exercises.Exercise7;
 
-import static io.codelex.classesandobjects.exercises.Exercise7.Dog.hasSameMotherAs;
-
 public class DogTest {
     public static void main(String[] args) {
         Dog max = new Dog("Max", "male", "Lady", "Rocky");
@@ -17,7 +15,7 @@ public class DogTest {
         System.out.println(coco.getFathersName());
         System.out.println(sparky.getFathersName());
 
-        if (hasSameMotherAs(coco, rocky)) {
+        if (coco.hasSameMotherAs(rocky)) {
             System.out.println("Coco has the same mother as Rocky");
         } else {
             System.out.println("They dont have the same mother");
