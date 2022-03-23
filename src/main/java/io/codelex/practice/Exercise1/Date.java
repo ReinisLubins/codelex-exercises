@@ -5,14 +5,20 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Date {
+    private static final int HOURS_OF_WORK_IN_WEEKEND = 0;
+    private static final int HOURS_OF_WORK_IN_WEEKDAY = 8;
 
-    public static void hoursOfWork(LocalDate firstDate, LocalDate secondDate) { // logic
+    private static boolean isWeekend(LocalDate date) {
+        return date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY;
+    }
+
+    private static void hoursOfWork(LocalDate firstDate, LocalDate secondDate) { // logic
         int sumOfHours = 0;
         for (LocalDate date = firstDate.minusDays(1); date.isBefore(secondDate); date = date.plusDays(1)) {
-            if (date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
-                sumOfHours += 0;
+            if (isWeekend(date)) {
+                sumOfHours += HOURS_OF_WORK_IN_WEEKEND;
             } else {
-                sumOfHours += 8;
+                sumOfHours += HOURS_OF_WORK_IN_WEEKDAY;
             }
         }
         System.out.println(sumOfHours);

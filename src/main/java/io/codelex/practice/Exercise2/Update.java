@@ -6,11 +6,13 @@ import java.util.Scanner;
 
 public class Update {
 
-    public static void dayToUpdate(LocalDate launchDate, int yearToUpdate, int monthToUpdate) { // logic
+    private static LocalDate dateOfUpdates(int yearToUpdate, int monthToUpdate) {
         LocalDate inputDate = LocalDate.of(yearToUpdate, monthToUpdate, 1);
-        LocalDate dateOfUpdates = inputDate.with(TemporalAdjusters.lastDayOfMonth());
+        return inputDate.with(TemporalAdjusters.lastDayOfMonth());
+    }
 
-        for (LocalDate date = launchDate.minusDays(1); date.isBefore(dateOfUpdates); date = date.plusDays(14)) {
+    private static void dayToUpdate(LocalDate launchDate, int yearToUpdate, int monthToUpdate) { // logic
+        for (LocalDate date = launchDate.minusDays(1); date.isBefore(dateOfUpdates(yearToUpdate, monthToUpdate)); date = date.plusDays(14)) {
             if (date.getYear() == yearToUpdate && date.getMonthValue() == monthToUpdate) {
                 System.out.println("Date of update is: " + date);
             }
