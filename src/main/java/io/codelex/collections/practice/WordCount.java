@@ -15,8 +15,10 @@ public class WordCount {
         String line = bf.readLine();
 
         int lines = 0;
+        int chars = 0;
 
         while (line != null) {
+            chars += line.length();
             fileToString.append(line).append(" ");
             line = bf.readLine();
             lines++;
@@ -31,7 +33,6 @@ public class WordCount {
         }
 
         int words = cleanString.toString().replaceAll("\\p{javaSpaceChar}{2,}", " ").split(" ").length;
-        int chars = cleanString.toString().replaceAll("\\p{javaSpaceChar}{2,}", " ").split("").length;
 
         System.out.print("Lines = " + lines + "\nWords = " + words + "\nChars = " + chars);
     }
