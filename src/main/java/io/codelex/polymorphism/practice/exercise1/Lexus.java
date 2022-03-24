@@ -1,6 +1,6 @@
 package io.codelex.polymorphism.practice.exercise1;
 
-public class Lexus {
+public class Lexus implements Car, Boost {
     private Integer currentSpeed = 0;
 
     public void speedUp() {
