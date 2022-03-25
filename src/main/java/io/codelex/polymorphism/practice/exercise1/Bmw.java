@@ -18,4 +18,11 @@ public class Bmw implements Car {
     public void startEngine() {
         System.out.println("Rrrrrrr.....");
     }
+
+    @Override
+    public String toString() {
+        return "Bmw{" +
+                "currentSpeed=" + currentSpeed +
+                '}';
+    }
 }

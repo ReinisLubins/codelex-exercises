@@ -18,4 +18,11 @@ public class Toyota implements Car {
     public void startEngine() {
         System.out.println("Bzzz...");
     }
+
+    @Override
+    public String toString() {
+        return "Toyota{" +
+                "currentSpeed=" + currentSpeed +
+                '}';
+    }
 }

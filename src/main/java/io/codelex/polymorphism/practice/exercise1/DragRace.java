@@ -31,19 +31,24 @@ public class DragRace {
         dragRace.add(lexus);
         dragRace.add(tesla);
 
-        for (int i = 0; i < 5; i++) {
-            dragRace.get(i).speedUp();
-            if (i == 2 || i == 5 || i == 8) {
-                dragRace.get(i).speedUp();
+        for (int i = 0; i < 10; i++) {
+            int index = i;
+            if (i >= dragRace.size()) {
+                index = i - dragRace.size();
+            }
+            dragRace.get(index).speedUp();
+
+            if (index == 2 || index == 5 || index == 8) {
+                dragRace.get(index).useNitrousOxideEngine();
             }
         }
 
         Car fastestCar = null;
         int speedOfFastestCar = 0;
-        for (int i = 0; i < dragRace.size(); i++) {
-            int speedOfCurrentCar = Integer.parseInt(dragRace.get(i).showCurrentSpeed());
+        for (Car car : dragRace) {
+            int speedOfCurrentCar = Integer.parseInt(car.showCurrentSpeed());
             if (speedOfCurrentCar > speedOfFastestCar) {
-                fastestCar = dragRace.get(i);
+                fastestCar = car;
             }
         }
         System.out.println(fastestCar);

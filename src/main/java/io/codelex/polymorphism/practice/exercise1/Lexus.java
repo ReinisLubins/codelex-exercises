@@ -22,4 +22,11 @@ public class Lexus implements Car, Boost {
     public void startEngine() {
         System.out.println("Rrrrrrr.....");
     }
+
+    @Override
+    public String toString() {
+        return "Lexus{" +
+                "currentSpeed=" + currentSpeed +
+                '}';
+    }
 }

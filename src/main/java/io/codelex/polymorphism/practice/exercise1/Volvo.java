@@ -22,4 +22,11 @@ public class Volvo implements Car, Boost {
     public void useNitrousOxideEngine() {
         currentSpeed = currentSpeed + 40;
     }
+
+    @Override
+    public String toString() {
+        return "Volvo{" +
+                "currentSpeed=" + currentSpeed +
+                '}';
+    }
 }

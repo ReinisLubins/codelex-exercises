@@ -18,4 +18,11 @@ public class Tesla implements Car {
     public void startEngine() {
         System.out.println("-- silence ---");
     }
+
+    @Override
+    public String toString() {
+        return "Tesla{" +
+                "currentSpeed=" + currentSpeed +
+                '}';
+    }
 }
