@@ -16,9 +16,17 @@ public class Parcel implements Validatable {
 
     @Override
     public boolean validate() {
-        if (weight < 30) {
+        int MAX_SIZE_OF_DIMENSION = 30;
+        int MAX_SUM_OF_DIMENSIONS = 300;
+        float ALLOWABLE_WEIGHT = 30;
+
+        if (weight < ALLOWABLE_WEIGHT) {
             isExpress = true;
         }
-        return xLength + yLength + zLength < 300 && xLength > 30 && yLength > 30 && zLength > 30 && isExpress;
+        return xLength + yLength + zLength < MAX_SUM_OF_DIMENSIONS
+                && xLength > MAX_SIZE_OF_DIMENSION
+                && yLength > MAX_SIZE_OF_DIMENSION
+                && zLength > MAX_SIZE_OF_DIMENSION
+                && isExpress;
     }
 }

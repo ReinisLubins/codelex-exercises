@@ -7,8 +7,8 @@ import java.math.RoundingMode;
 public class Cone extends ThreeDShape {
     private BigDecimal width;
     private BigDecimal height;
-    private final MathContext mc = new MathContext(3);
-    private final RoundingMode roundingMode = RoundingMode.FLOOR;
+    private MathContext mc = new MathContext(3);
+    private RoundingMode roundingMode = RoundingMode.FLOOR;
     private final BigDecimal pi = BigDecimal.valueOf(Math.PI);
 
     public Cone(int width, int height) {
