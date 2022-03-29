@@ -1,4 +1,4 @@
-package io.codelex.multithreading.simplified;
+package io.codelex.multithreading;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -38,7 +38,7 @@ public class TheaterTickets {
     }
 
     //Fix this method
-    public static void buyTicket() {
+    public static synchronized void buyTicket() {
         if (tickets.size() > 0) {
             String ticket = tickets.get(0);
             tickets.remove(ticket);

@@ -1,4 +1,4 @@
-package io.codelex.multithreading.simplified;
+package io.codelex.multithreading;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -16,8 +16,8 @@ public class ScooterRental {
      Fix the program so that it would work correctly.
     */
 
-    private static int maxScootersAvailable = 5;
-    private static boolean canTakeMoreScooters = true;
+    private static volatile int maxScootersAvailable = 5;
+    private static volatile boolean canTakeMoreScooters = true;
 
     public static void main(String[] args) {
 
