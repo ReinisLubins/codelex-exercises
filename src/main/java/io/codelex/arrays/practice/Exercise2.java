@@ -13,7 +13,9 @@ public class Exercise2 {
         System.out.println("Please enter a max number");
         int maxNumber = input.nextInt();
 
+
         int[] myArray = new int[2];
+
         int sum = 0;
 
         for (int j : myArray) {

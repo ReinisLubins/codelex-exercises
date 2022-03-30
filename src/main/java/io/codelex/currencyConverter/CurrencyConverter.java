@@ -45,7 +45,7 @@ public class CurrencyConverter {
     }
 
 
-    public  static String getExchangeRates() throws IOException {
+    public static String getExchangeRates() throws IOException {
 
         String theURL = "https://api.exchangerate.host/latest";
         URL url = new URL(theURL);
@@ -56,6 +56,6 @@ public class CurrencyConverter {
         while ((inputLine = in.readLine()) != null) {
             inputData.append(inputLine);
         }
-        return  inputData.toString();
+        return inputData.toString();
     }
 }
