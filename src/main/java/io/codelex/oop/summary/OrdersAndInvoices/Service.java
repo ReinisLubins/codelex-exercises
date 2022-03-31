@@ -1,4 +1,4 @@
 package io.codelex.oop.summary.OrdersAndInvoices;
 
-public interface Item extends SellableThing {
+public interface Service extends SellableThing {
 }

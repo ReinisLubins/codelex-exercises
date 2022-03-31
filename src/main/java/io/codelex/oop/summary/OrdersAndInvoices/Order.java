@@ -5,18 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    private List<AbstractItem> listOfItems;
+    private List<SellableThing> listOfItems;
 
     public Order() {
         this.listOfItems = new ArrayList<>();
     }
 
-    public void addItem(AbstractItem item) {
+    public void addItem(SellableThing item) {
         listOfItems.add(item);
     }
 
     public BigDecimal sumOfItems() {
-        return listOfItems.stream().map(AbstractItem::price)
+        return listOfItems.stream().map(SellableThing::price)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
@@ -28,9 +28,11 @@ public class Order {
         return sumOfItems().add(vatValue());
     }
 
-    public void displayOrder() {
+    public String[] displayOrder() {
+        String[] itemsList = new String[listOfItems.size()];
         for (int i = 0; i < listOfItems.size(); i++) {
-            System.out.println("= " + i + "." + listOfItems.get(i).fullInfo());
+            itemsList[i] = listOfItems.get(i).fullInfo();
         }
+        return itemsList;
     }
 }
