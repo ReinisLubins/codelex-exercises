@@ -8,7 +8,7 @@ public class ItemPacking implements Service {
 
     @Override
     public String name() {
-        return name();
+        return NAME;
     }
 
     @Override
