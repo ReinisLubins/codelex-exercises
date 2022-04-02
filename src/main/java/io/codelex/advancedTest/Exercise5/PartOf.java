@@ -5,8 +5,8 @@ import java.util.function.Predicate;
 
 public class PartOf {
 
-    public static <T> Integer partOf(List<T> array, Predicate function) {
+    public static <T> Double partOf(List<T> array, Predicate<T> function) {
         long matches = array.stream().filter(function).count();
-        return null;
+        return (double) matches / array.size();
     }
 }

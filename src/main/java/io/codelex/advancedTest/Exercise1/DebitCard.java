@@ -19,7 +19,10 @@ public class DebitCard extends Card {
     public void takeMoney(double amount) throws NotEnoughFundsException {
         try {
             setBalance(getBalance().subtract(BigDecimal.valueOf(amount)));
-        } catch (ArithmeticException e) {
+            if (getBalance().compareTo(BigDecimal.ZERO) < 0) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
             throw new NotEnoughFundsException("Not enough funds!");
         }
     }

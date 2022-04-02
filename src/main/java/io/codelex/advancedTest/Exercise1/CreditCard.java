@@ -19,7 +19,11 @@ public class CreditCard extends Card {
             if (getBalance().compareTo(BigDecimal.valueOf(100)) < 0) {
                 System.out.println("Warning: Low funds");
             }
-        } catch (ArithmeticException e) {
+
+            if (getBalance().compareTo(BigDecimal.ZERO) < 0) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
             throw new NotEnoughFundsException("Not enough funds!");
         }
     }

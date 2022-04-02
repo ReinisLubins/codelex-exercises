@@ -2,8 +2,8 @@ package io.codelex.advancedTest.Exercise2;
 
 public class Tests {
     public static void main(String[] args) throws BasketFullException, BasketEmptyException {
-        Basket<Object> basket1 = new Basket<>();
-        Basket<Object> basket2 = new Basket<>();
+        Basket<Apple> basket1 = new Basket<>();
+        Basket<Mushroom> basket2 = new Basket<>();
 
         Apple apple1 = new Apple();
         Apple apple2 = new Apple();
@@ -27,12 +27,12 @@ public class Tests {
         basket1.addToBasket(apple8);
         basket1.addToBasket(apple9);
         basket1.addToBasket(apple10);
+        //basket1.addToBasket(apple11);
 
 
         Mushroom mushroom1 = new Mushroom();
 
         basket2.addToBasket(mushroom1);
-        basket2.removeFromBasket(mushroom1);
         basket2.removeFromBasket(mushroom1);
         basket2.removeFromBasket(mushroom1);
 
