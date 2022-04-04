@@ -8,11 +8,11 @@ public abstract class Card {
     private int ccvCode;
     private BigDecimal balance;
 
-    public Card(String owner, String number, int ccvCode, double balance) {
+    public Card(String owner, String number, int ccvCode, BigDecimal balance) {
         this.owner = owner;
         this.number = number;
         this.ccvCode = ccvCode;
-        this.balance = BigDecimal.valueOf(balance);
+        this.balance = balance;
     }
 
     public abstract void addMoney(double amount);
