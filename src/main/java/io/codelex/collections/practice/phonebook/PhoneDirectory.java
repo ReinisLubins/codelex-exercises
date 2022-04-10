@@ -20,8 +20,8 @@ public class PhoneDirectory {
         }
 
         PhoneEntry newEntry = new PhoneEntry();  // Create a new pair.
-        newEntry.name = name;
-        newEntry.number = number;
+        newEntry.setName(name);
+        newEntry.setNumber(number);
         data.put(name, number);   // Add the new pair to the array.
     }
 

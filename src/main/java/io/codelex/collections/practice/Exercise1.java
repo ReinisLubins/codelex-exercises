@@ -24,10 +24,13 @@ public class Exercise1 {
         System.out.println(hashList);
 
         //todo - replace array with a HashMap (use brand as key and origination as value) an print out the results
-        Map<Integer, String> hashMap = new HashMap<>();
-        for (int i = 0; i < array.length; i++) {
-            hashMap.put(i, array[i]);
-        }
+        Map<String, String> hashMap = new HashMap<>();
+        hashMap.put("Audi", "Germany");
+        hashMap.put("BMW", "Germany");
+        hashMap.put("Honda", "Japan");
+        hashMap.put("Mercedes", "Germany");
+        hashMap.put("VolksWagen", "Germany");
+        hashMap.put("Tesla", "USA");
         System.out.println(hashMap);
     }
 }

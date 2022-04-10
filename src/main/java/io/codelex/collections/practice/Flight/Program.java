@@ -12,60 +12,7 @@ public class Program {
     private static final Map<Integer, String> listOfAvailableFlights = new HashMap<>();
     private static final List<String> chosenRoute = new ArrayList<>();
 
-    private static void fileRead() throws IOException {
-        BufferedReader bf = new BufferedReader(new FileReader(file));
-        String lines = bf.readLine();
-
-        while (lines != null) {
-            flights.add(lines);
-            lines = bf.readLine();
-        }
-    }
-
-    private static String flightFrom(int index) {
-        String[] ir = flights.get(index).replaceAll(" ", "").split("->");
-        return ir[0];
-    }
-
-    private static String flightTo(int index) {
-        String[] ir = flights.get(index).replaceAll(" ", "").split("->");
-        return ir[1];
-    }
-
-    private static void listOfAllCities() {
-        int indexForKey = 1;
-        for (int i = 0; i < flights.size(); i++) {
-            if (!allCities.containsValue(flightFrom(i))) {
-                allCities.put(indexForKey, flightFrom(i));
-                indexForKey++;
-            }
-        }
-    }
-
-    private static void availableFlights(int objectKey) {
-        String departureCity = allCities.get(objectKey);
-        int indexForFlights = 1;
-
-        for (int i = 0; i < flights.size(); i++) {
-            if (departureCity.equals(flightFrom(i))) {
-                listOfAvailableFlights.put(indexForFlights, flightTo(i));
-                indexForFlights++;
-            }
-        }
-    }
-
-    private static void printChoseRoute() {
-        System.out.println("Your chosen route:");
-        for (int i = 0; i < chosenRoute.size(); i++) {
-            if ((i == chosenRoute.size() - 1)) {
-                System.out.print(chosenRoute.get(i));
-            } else {
-                System.out.print(chosenRoute.get(i) + "->");
-            }
-        }
-    }
-
-    public static void runFlightPlanner() throws IOException {
+    public static void updateListOfAllCities() throws IOException {
         fileRead();
         listOfAllCities();
 
@@ -127,5 +74,58 @@ public class Program {
             } while (!startingCityEqualsNextCity);
         }
         printChoseRoute();
+    }
+
+    private static void fileRead() throws IOException {
+        BufferedReader bf = new BufferedReader(new FileReader(file));
+        String lines = bf.readLine();
+
+        while (lines != null) {
+            flights.add(lines);
+            lines = bf.readLine();
+        }
+    }
+
+    private static String flightFrom(int index) {
+        String[] flightInfo = flights.get(index).replaceAll(" ", "").split("->");
+        return flightInfo[0];
+    }
+
+    private static String flightTo(int index) {
+        String[] flightInfo = flights.get(index).replaceAll(" ", "").split("->");
+        return flightInfo[1];
+    }
+
+    private static void listOfAllCities() {
+        int indexForKey = 1;
+        for (int i = 0; i < flights.size(); i++) {
+            if (!allCities.containsValue(flightFrom(i))) {
+                allCities.put(indexForKey, flightFrom(i));
+                indexForKey++;
+            }
+        }
+    }
+
+    private static void availableFlights(int objectKey) {
+        String departureCity = allCities.get(objectKey);
+        int indexForFlights = 1;
+
+        for (int i = 0; i < flights.size(); i++) {
+            if (departureCity.equals(flightFrom(i))) {
+                listOfAvailableFlights.put(indexForFlights, flightTo(i));
+                indexForFlights++;
+            }
+        }
+    }
+
+    private static void printChoseRoute() {
+        System.out.println("Your chosen route:");
+        for (int i = 0; i < chosenRoute.size(); i++) {
+            if ((i == chosenRoute.size() - 1)) {
+                System.out.print(chosenRoute.get(i));
+            } else {
+                System.out.print(chosenRoute.get(i) + "->");
+            }
+        }
     }
 }
