@@ -7,7 +7,7 @@ public class Exercise2 {
             methodB();
         } catch (ArithmeticException e) {
             e.printStackTrace();
-            System.out.println("Exception object: " + e);
+            throw e;
         }
     }
 
@@ -15,7 +15,7 @@ public class Exercise2 {
         try {
             methodC();
         } catch (ArithmeticException e) {
-            System.out.println("Exception object: " + e);
+            throw e;
         }
     }
 
@@ -24,7 +24,7 @@ public class Exercise2 {
             System.out.println(20 / 0);
         } catch (ArithmeticException e) {
             e.printStackTrace();
-            System.out.println("Exception object: " + e);
+            throw e;
         }
     }
 
