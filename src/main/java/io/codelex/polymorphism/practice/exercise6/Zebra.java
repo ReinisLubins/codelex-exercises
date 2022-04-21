@@ -15,6 +15,14 @@ public class Zebra extends Mammal {
         setFoodEaten(quantity);
     }
 
+    public void eatFood(String[] food) {
+        if (food[0].equals("Meat")) {
+            System.out.println("Zebra are not eating that type of food!");
+        } else {
+            setFoodEaten(Integer.parseInt(food[1]));
+        }
+    }
+
     @Override
     public String toString() {
         return "Zebra[" + getAnimalName() + ", " + getAnimalWeight() + ", " +

@@ -14,21 +14,21 @@ public class GetAnimal {
                 animal = cat;
             }
             case "Tiger" -> {
-                Tiger tiger = new Tiger(inputParameters[1], "Cat",
+                Tiger tiger = new Tiger(inputParameters[1], "Tiger",
                         Double.parseDouble(inputParameters[2]), 0,
                         inputParameters[3]);
                 tiger.makeSound();
                 animal = tiger;
             }
             case "Zebra" -> {
-                Zebra zebra = new Zebra(inputParameters[1], "Cat",
+                Zebra zebra = new Zebra(inputParameters[1], "Zebra",
                         Double.parseDouble(inputParameters[2]), 0,
                         inputParameters[3]);
                 zebra.makeSound();
                 animal = zebra;
             }
             case "Mouse" -> {
-                Zebra mouse = new Zebra(inputParameters[1], "Cat",
+                Mouse mouse = new Mouse(inputParameters[1], "Mouse",
                         Double.parseDouble(inputParameters[2]), 0,
                         inputParameters[3]);
                 mouse.makeSound();
@@ -40,23 +40,11 @@ public class GetAnimal {
 
     public void setFoodToAnimal(String[] food) {
         if (this.newAnimal instanceof Zebra) {
-            if (food[0].equals("Meat")) {
-                System.out.println("Zebra are not eating that type of food!");
-            } else {
-                this.newAnimal.setFoodEaten(Integer.parseInt(food[1]));
-            }
+            ((Zebra) this.newAnimal).eatFood(food);
         } else if (this.newAnimal instanceof Mouse) {
-            if (food[0].equals("Meat")) {
-                System.out.println("Mouse are not eating that type of food!");
-            } else {
-                this.newAnimal.setFoodEaten(Integer.parseInt(food[1]));
-            }
+            ((Mouse) this.newAnimal).eatFood(food);
         } else if (this.newAnimal instanceof Tiger) {
-            if (food[0].equals("Vegetable")) {
-                System.out.println("Tiger are not eating that type of food!");
-            } else {
-                this.newAnimal.setFoodEaten(Integer.parseInt(food[1]));
-            }
+            ((Tiger) this.newAnimal).eatFood(food);
         } else {
             this.newAnimal.setFoodEaten(Integer.parseInt(food[1]));
         }
