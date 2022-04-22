@@ -46,7 +46,9 @@ public class StreamsExercise {
     }
 
     public static List<String> getDistinctLetters(List<String> names) {
-        return names.stream().map((String n) -> n.split("")).flatMap(Arrays::stream).distinct().toList();
+        return names.stream()
+                .map((String n) -> n.split(""))
+                .flatMap(Arrays::stream).distinct().toList();
     }
 
     public static String separateNamesByComma(List<User> users) {
@@ -74,11 +76,13 @@ public class StreamsExercise {
     }
 
     public static Map<Boolean, Map<Integer, List<User>>> groupByGenderAndAge(List<User> users) {
-        return users.stream().collect(Collectors.partitioningBy(User::isMale, Collectors.groupingBy(User::getAge)));
+        return users.stream()
+                .collect(Collectors.partitioningBy(User::isMale, Collectors.groupingBy(User::getAge)));
     }
 
     public static Map<Boolean, Long> countGender(List<User> users) {
-        return users.stream().collect(Collectors.partitioningBy(User::isMale, Collectors.counting()));
+        return users.stream()
+                .collect(Collectors.partitioningBy(User::isMale, Collectors.counting()));
     }
 
     public static boolean anyMatch(List<User> users, int age) {
@@ -102,7 +106,9 @@ public class StreamsExercise {
     }
 
     public static List<Integer> generateFirst10PrimeNumbers() {
-        return IntStream.range(2, Integer.MAX_VALUE).filter(StreamsExercise::isPrime).limit(10).boxed().toList();
+        return IntStream.range(2, Integer.MAX_VALUE)
+                .filter(StreamsExercise::isPrime)
+                .limit(10).boxed().toList();
     }
 
     public static boolean isPrime(int number) {
@@ -114,7 +120,9 @@ public class StreamsExercise {
     }
 
     public static User findOldest(List<User> users) {
-        return users.stream().reduce((p1, p2) -> p1.getAge() > p2.getAge() ? p1 : p2).get();
+        return users.stream()
+                .max(Comparator.comparing(User::getAge))
+                .orElseThrow(NoSuchElementException::new);
     }
 
     public static int sumAge(List<User> users) {
